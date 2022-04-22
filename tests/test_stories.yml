@@ -1,0 +1,362 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 1
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+
+- story: happy path 2
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: sad path 1
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      yes
+    intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      not really
+    intent: deny
+  - action: utter_goodbye
+
+- story: sad path 3
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      very terrible
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      no
+    intent: deny
+  - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: interactive_story_1
+  steps:
+  - user: |
+      what is eligibility for company sponsored higher studies
+    intent: FAQ_eligibility
+    entities:
+    - subject: company sponsored higher studies
+  - slot_was_set:
+    - subject: company sponsored higher studies
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: company sponsored study
+  - action: utter_CS_study_eligibility
+  - action: action_slot_reset
+
+
+- story: interactive_story_2
+  steps:
+  - user: |
+      what is eligibility for conveyance advance
+  - intent: FAQ_eligibility
+    entities:
+    - subject: conveyance advance
+  - slot_was_set:
+    - subject: conveyance advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_eligibility
+  - action: action_slot_reset
+
+
+- story: interactive_story_3
+  steps:
+  - user: |
+      who is eligible for multipurpose advance
+  - intent: FAQ_eligibility
+    entities:
+    - subject: multipurpose advance
+  - slot_was_set:
+    - subject: multipurpose advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: multi-purpose advance
+  - action: utter_MPA_eligibility
+  - action: action_slot_reset
+
+
+- story: interactive_story_4
+  steps:
+  - user: |
+      who is eligible for sabbatical leave
+  - intent: FAQ_eligibility
+    entities:
+    - subject: sabbatical leave
+  - slot_was_set:
+    - subject: sabbatical leave
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: sabbatical leave
+  - action: utter_sabbatical_eligibility
+  - action: action_slot_reset
+
+
+- story: interactive_story_5
+  steps:
+  - user: |
+      what is the process for children higher education advance
+  - intent: FAQ_process
+    entities:
+    - subject: children higher education advance
+  - slot_was_set:
+    - subject: children higher education advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: children education advance
+  - action: utter_CHEA_process
+  - action: action_slot_reset
+
+
+- story: interactive_story_6
+  steps:
+  - user: |
+      what is the process for TNA
+  - intent: FAQ_process
+    entities:
+    - subject: TNA
+  - slot_was_set:
+    - subject: TNA
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: tna
+  - action: utter_TNA_process
+  - action: action_slot_reset
+
+
+- story: interactive_story_7
+  steps:
+  - user: |
+      how many leaves are entitled in ccl
+  - intent: FAQ_duration
+    entities:
+    - subject: ccl
+  - slot_was_set:
+    - subject: ccl
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: ccl
+  - action: utter_CCL_duration
+  - action: action_slot_reset
+
+
+- story: interactive_story_8
+  steps:
+  - user: |
+      what is duration of child care leave
+  - intent: FAQ_duration
+    entities:
+    - subject: child care leave
+  - slot_was_set:
+    - subject: child care leave
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: child care leave
+  - action: utter_CCL_duration
+  - action: action_slot_reset
+
+
+- story: interactive_story_9
+  steps:
+  - user: |
+      what is entitlement for reimbursement of mobile
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: mobile
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: level
+  - slot_was_set:
+    - level: executive
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: executive
+  - action: utter_mobile_executive_entitlement
+  - action: action_slot_reset
+
+
+- story: interactive_story_10
+  steps:
+  - user: |
+      conveyance advance amount
+  - intent: FAQ_entitlements
+    entities:
+    - subject: conveyance advance
+  - slot_was_set:
+    - subject: conveyance advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_entitlement
+  - action: action_slot_reset
+
+
+- story: interactive_story_11
+  steps:
+  - user: |
+      what is the amount of conveyance advance for purchase of motor car for executives
+  - intent: FAQ_entitlements
+    entities:
+    - subject: conveyance advance
+    - level: executives
+  - slot_was_set:
+    - subject: conveyance advance
+  - slot_was_set:
+    - level: executives
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_entitlement
+  - action: action_slot_reset
+
+
+- story: interactive_story_12
+  steps:
+  - user: |
+      what is amount of children higher education
+  - intent: FAQ_benefit
+    entities:
+    - subject: children higher education
+  - slot_was_set:
+    - subject: children higher education
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: children education advance
+  - action: utter_CHEA_benefit
+  - action: action_slot_reset
+
+
+- story: interactive_story_13
+  steps:
+  - user: |
+      what are welfare facilities available for POWERGRID employees
+  - intent: FAQ_benefit
+    entities:
+    - subject: welfare facilities
+  - slot_was_set:
+    - subject: welfare facilities
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: welfare facilities
+  - action: utter_WF_benefit
+  - action: action_slot_reset
+
+
+- story: interactive_story_14
+  steps:
+  - user: |
+      what is interest rate on conveyance advance
+  - intent: FAQ_rates
+    entities:
+    - subject: conveyance advance
+  - slot_was_set:
+    - subject: conveyance advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_rates
+  - action: action_slot_reset
+
+
+- story: interactive_story_15
+  steps:
+  - user: |
+      what is purpose of sabbatical scheme
+  - intent: FAQ_objective
+    entities:
+    - subject: sabbatical
+  - slot_was_set:
+    - subject: sabbatical
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: sabbatical leave
+  - action: utter_sabbatical_objective
+  - action: action_slot_reset
+
+
+- story: interactive_story_16
+  steps:
+  - user: |
+      what is purpose of sabbatical scheme
+  - intent: FAQ_benefit
+    entities:
+    - subject: group personal accident insurance
+  - slot_was_set:
+    - subject: group personal accident insurance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: group personal accident insurance
+  - action: utter_GPAI_benefit
+  - action: action_slot_reset
+

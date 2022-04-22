@@ -1,0 +1,912 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+#Process Stories
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_process
+    entities:
+    - subject: Children Education Advance
+  - slot_was_set:
+    - subject: Children Education Advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: children education advance
+  - action: utter_CHEA_process
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_process
+    entities:
+    - subject: Children Education Advance
+  - slot_was_set:
+    - subject: Children Education Advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: tna
+  - action: utter_TNA_process
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_process
+    entities:
+    - subject: Children Education Advance
+  - slot_was_set:
+    - subject: Children Education Advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: multi-purpose advance
+  - action: utter_MPA_process
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_process
+    entities:
+    - subject: Children Education Advance
+  - slot_was_set:
+    - subject: Children Education Advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: study leave
+  - action: utter_study_process
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_process
+    entities:
+    - subject: study leave
+  - slot_was_set:
+    - subject: study leave
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: study leave
+  - action: utter_study_process
+  - intent: FAQ_process
+    entities:
+    - subject: TNA
+  - slot_was_set:
+    - subject: TNA
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: tna
+  - action: utter_TNA_process
+  - intent: FAQ_process
+    entities:
+    - subject: Children Education Advance
+  - slot_was_set:
+    - subject: Children Education Advance
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: children education advance
+  - action: utter_CHEA_process
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: mobile
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: workman
+  - action: utter_mobile_workman_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_rates
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: fixed monthly travelling expenses
+  - action: utter_FMTE_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_duration
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: gratuity fund
+  - action: utter_EGF_duration
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: national award
+  - action: utter_Award_benefit
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: mobile
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: supervisor
+  - action: utter_mobile_supervisor_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: mobile
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: executive
+  - action: utter_mobile_executive_entitlement
+  - action: action_slot_reset
+
+#tarnnum
+
+#Eligibility Stories
+
+- story: Eligibility related queries for Multi purpose advance
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: multi-purpose advance
+  - action: utter_MPA_eligibility
+  - action: action_slot_reset
+
+- story: Eligibility related queries for company sponsored study
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: company sponsored study
+  - slot_was_set:
+    - subject: company sponsored higher studies
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: company sponsored study
+  - action: utter_CS_study_eligibility
+  - action: action_slot_reset
+
+- story: Eligibility related queries for children education advance
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: children education advance
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: children education advance
+  - action: utter_CHEA_eligibility
+  - action: action_slot_reset
+
+- story: Eligibility related queries for study leave
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: study leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: study leave
+  - action: utter_study_leave_eligibility
+  - action: action_slot_reset
+
+- story: Eligibility related queries for child care leave
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: child care leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: ccl
+  - action: utter_CCL_eligibility
+  - action: action_slot_reset
+- story: Eligibility related queries for child care leave
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: child care leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: child care leave
+  - action: utter_CCL_eligibility
+  - action: action_slot_reset  
+
+- story: Pension Plan eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: ECPP
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: contributory pension plan
+  - action: utter_ECPP_eligibility
+  - action: action_slot_reset
+
+- story: Pension Plan eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: ECPP
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: pension
+  - action: utter_ECPP_eligibility
+  - action: action_slot_reset  
+  
+
+- story: Sabbatical eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: sabbatical leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: sabbatical leave
+  - action: utter_sabbatical_eligibility
+  - action: action_slot_reset
+
+- story: Conveyance Advance eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: CAdv
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_eligibility
+  - action: action_slot_reset
+
+- story: National award eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: Award
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: national award
+  - action: utter_Award_eligibility
+  - action: action_slot_reset
+
+- story: Gratuity Fund eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: EGF
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: gratuity fund
+  - action: utter_EGF_eligibility
+  - action: action_slot_reset
+
+- story: Provident Fund eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: EPF
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: provident fund
+  - action: utter_EPF_eligibility
+  - action: action_slot_reset
+
+
+- story: Provident Fund eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: EPF
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: pf
+  - action: utter_EPF_eligibility
+  - action: action_slot_reset
+
+- story: FMTE eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: FMTE
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: fmte
+  - action: utter_FMTE_eligibility
+  - action: action_slot_reset
+
+- story: FMTE eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: FMTE
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: fixed monthly travelling expenses
+  - action: utter_FMTE_eligibility
+  - action: action_slot_reset
+
+- story: Merit Award eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: mac
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: merit award
+  - action: utter_mac_eligibility
+  - action: action_slot_reset
+
+- story: DRS eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: DRS
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: death relief scheme
+  - action: utter_DRS_eligibility
+  - action: action_slot_reset
+
+- story: DRS eligibility query
+  steps:
+  - intent: FAQ_eligibility
+    entities:
+    - subject: DRS
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: drs
+  - action: utter_DRS_eligibility
+  - action: action_slot_reset  
+#duration queries
+- story: Duration related queries-1
+  steps:
+  - intent: FAQ_duration
+    entities:
+    - subject: study leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: study leave
+  - action: utter_study_leave_duration
+  - action: action_slot_reset
+
+- story: CCL Duration query
+  steps:
+  - intent: FAQ_duration
+    entities:
+    - subject: child care leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: ccl
+  - action: utter_CCL_duration
+  - action: action_slot_reset
+
+- story: CCL Duration query
+  steps:
+  - intent: FAQ_duration
+    entities:
+    - subject: child care leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: child care leave
+  - action: utter_CCL_duration
+  - action: action_slot_reset
+
+- story: Duration related queries-3
+  steps:
+  - intent: FAQ_duration
+    entities:
+    - subject: Mobile
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: mobile
+  - action: utter_mobile_duration
+  - action: action_slot_reset
+
+- story: Duration related queries-4
+  steps:
+  - intent: FAQ_duration
+    entities:
+    - subject: sabbatical leave
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: sabbatical leave
+  - action: utter_sabbatical_duration
+  - action: action_slot_reset
+
+#tarnnum  
+#FAQ_criteria-Adarsh
+- story: Criteria related queries-1
+  steps:
+  - intent: FAQ_criteria
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: guest house
+  - action: utter_guest_house_criteria
+  - action: action_slot_reset
+#FAQ_deduction
+- story: ECPP Deduction related query
+  steps:
+  - intent: FAQ_deduction
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: contributory pension plan
+  - action: utter_ECPP_deduction
+  - action: action_slot_reset
+
+- story: EPF Deduction related query
+  steps:
+  - intent: FAQ_deduction
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: provident fund
+  - action: utter_EPF_deduction
+  - action: action_slot_reset
+
+- story: DRS Deduction related query
+  steps:
+  - intent: FAQ_deduction
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: death relief scheme
+  - action: utter_DRS_deduction
+  - action: action_slot_reset
+
+#FAQ_Benefit
+
+- story: CHEA benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: children education advance
+  - action: utter_CHEA_benefit
+  - action: action_slot_reset
+
+
+- story: Employee Gratuity Fund benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: gratuity fund
+  - action: utter_EGF_benefit
+  - action: action_slot_reset
+
+
+- story: Multi Purpose Advance benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: multi-purpose advance
+  - action: utter_MPA_benefit
+  - action: action_slot_reset
+
+
+- story: DRS benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: death relief scheme
+  - action: utter_DRS_benefit
+  - action: action_slot_reset
+
+- story: Welfare Facilities benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: welfare facilities
+  - action: utter_WF_benefit
+  - action: action_slot_reset
+
+- story: GPAI benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: group personal accident insurance
+  - action: utter_GPAI_benefit
+  - action: action_slot_reset
+
+- story: EFER benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: family economic rehabilitation
+  - action: utter_EFER_benefit
+  - action: action_slot_reset
+
+- story: Funeral Expenses benefit query
+  steps:
+  - intent: FAQ_benefit
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: funeral expenses
+  - action: utter_PFE_benefit
+  - action: action_slot_reset
+
+#FAQ_objective
+- story: Sabbatical Objective
+  steps:
+  - intent: FAQ_objective
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: sabbatical leave
+  - action: utter_sabbatical_objective
+  - action: action_slot_reset
+
+- story: Funeral Expenses Objective
+  steps:
+  - intent: FAQ_objective
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: funeral expenses
+  - action: utter_PFE_objective
+  - action: action_slot_reset
+
+- story: Personal Accident Insurance Objective
+  steps:
+  - intent: FAQ_objective
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: group personal accident insurance
+  - action: utter_GPAI_objective
+  - action: action_slot_reset
+
+- story: Economic Rehabilitation Objective
+  steps:
+  - intent: FAQ_objective
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: family economic rehabilitation
+  - action: utter_EFER_objective
+  - action: action_slot_reset
+
+- story: interest rate queries
+  steps:
+  - intent: FAQ_rates
+    entities:
+    - subject: 
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: conveyance advance
+  - action: utter_CAdv_rates
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: mobile
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: level
+  - slot_was_set:
+    - level: executive
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: executive
+  - action: utter_mobile_executive_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: telecommunication
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: supervisor
+  - action: utter_tele_supervisor_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: telecommunication
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: workman
+  - action: utter_tele_workman_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject: mobile
+  - slot_was_set:
+    - subject: mobile
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: telecommunication
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: executive
+  - action: utter_tele_executive_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_2
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject:
+  - slot_was_set:
+    - subject: any
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: laptop
+  - action: utter_laptop_entitlement
+  - action: action_slot_reset
+
+- story: interactive_story_1
+  steps:
+  - intent: FAQ_entitlements
+    entities:
+    - subject2: accomodation charges
+    - subject: tour
+  - slot_was_set:
+    - subject: tour
+  - slot_was_set:
+    - subject2: accomodation charges
+  - action: action_subject_check
+  - slot_was_set:
+    - subject_cat: tour and travel
+  - action: action_subject2_check
+  - slot_was_set:
+    - subject2: accomodation charges
+  - action: level_form
+  - active_loop: level_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_level_check
+  - slot_was_set:
+    - level_cat: executive
+  - action: utter_select_grade_executive
+  - intent: choose_grade
+    entities:
+    - grade: CMD & Functional Directors
+  - slot_was_set:
+    - grade: CMD & Functional Directors
+  - action: action_tables
+  - action: action_slot_reset
+
+

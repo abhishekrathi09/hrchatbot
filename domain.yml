@@ -1,0 +1,408 @@
+version: '2.0'
+intents:
+- FAQ_benefit
+- FAQ_criteria
+- FAQ_deduction
+- FAQ_duration
+- FAQ_eligibility
+- FAQ_entitlements
+- FAQ_objective
+- FAQ_process
+- FAQ_rates
+- affirm
+- bot_challenge
+- choose_grade
+- deny
+- goodbye
+- greet
+- inform
+- mood_great
+- mood_unhappy
+entities:
+- subject
+- grade
+- subject2
+- level
+- travel_mode
+slots:
+  subject:
+    type: text
+  level:
+    type: text
+  travel_mode:
+    type: text
+  grade:
+    type: text
+  subject2:
+    type: text
+  subject_cat:
+    type: categorical
+    influence_conversation: true
+    values:
+    - children education advance
+    - training need assessment
+    - multi-purpose advance
+    - tna
+    - study leave
+    - company sponsored study
+    - child care leave
+    - ccl
+    - mobile
+    - telecommunication
+    - laptop
+    - trans hut
+    - guest house
+    - transit camp
+    - pension
+    - contributory pension plan
+    - conveyance advance
+    - national award
+    - sabbatical leave
+    - merit award
+    - gratuity fund
+    - provident fund
+    - fmte
+    - death relief scheme
+    - drs
+    - family economic rehabilitation
+    - group personal accident insurance
+    - welfare facilities
+    - funeral expenses
+    - fixed monthly travelling expenses
+    - pf
+    - tour and travel
+  level_cat:
+    type: categorical
+    influence_conversation: true
+    values:
+    - workman
+    - supervisor
+    - executive
+  travel_mode_cat:
+    type: categorical
+    influence_conversation: true
+    values:
+    - air
+    - train
+    - road
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_TNA_process:
+  - text: |-
+      The TNA portal has following pages 
+       Page 1: Fill/Update your Profile 
+       Page 2: Fill/Update your functional competencies 
+       Page 3: Fill/Update your behavioral competencies 
+       Page 4:  Fill your Training choices (Max 3choices - 1 functional/cross functional; 1 managerial; 1 behavioral) 
+       Page 5 : Your feedback on the programs attended in previous year 
+       Page 6 : Your feedback on the overall HRD systems and processes 
+       Page 7: Fill competencies of the departments you have earlier worked 
+       For a detailed view, please go through the short video on this page giving snapshot of the entire workflow.
+  utter_CHEA_process:
+  - text: Go to ESS> Employee Login > Employee Self Service > Miscellaneous Applications> Request - Children Higher Education Advance
+  utter_MPA_process:
+  - text: Go to ESS> Employee Login > Employee Self Service > Payments > Loan> Multi-purpose Advance
+  utter_study_process:
+  - text: |-
+      i)The employee will apply through Proper Channel to his Head of  Sub-station/Region/Department for permission to join the course as soon as  an advertisement/notification is issued by the concerned institutions in the  prescribed format. This will be examined by the Head of Sub-station/Region/Department  and forwarded to the concerned Human Resources Department with recommendations for  onward transmission to Corporate Human Resources Department. Wherever possible,  a copy of the application form prescribed by the institution must also be attached. 
+      ii) The sanctioning authority for study leave shall be notified from time to time. 
+      iii) On completion of the course, the employee shall submit to the sanctioning  authority a certificate/degree/paper in support of his having passed the examination,  which should also indicate the dates of commencement and completion of the course,  with the remarks, if any, of the authority in-charge of the course. 
+      iv) In case the employee fails to complete the course satisfactorily, rejoining  the service of the Corporation will require specific approval of the Director (Personnel).
+  utter_study_leave_entitlement:
+  - text: |-
+      i) The employee will not be entitled to any pay or allowance during the period of Study Leave. However, the facility of LTC & medical benefits will be permissible to employees who proceeds on study leave. In event of study abroad only dependants staying in country will be allowed medical facility. 
+      ii) The employee is entitled to the benefit of continuity of service for CPF and Gratuity and if the employee chooses to contribute to his Provident Fund Account during Study Leave period, the Corporation will make a matching contribution as per rules framed from time to time. 
+      iii) During the Study Leave period, the employee shall not be considered for promotion. However, the period will count for eligibility for promotion. The employee will be considered for promotion, as per the Corporation policy, after rejoining duties on expiry of Study Leave. The duration of Study Leave availed without completing the Study will not be reckoned for the purpose of eligibility for promotion or for earning increments. The employees will also not be eligible for grant of Study Leave again. 
+      iv) The Study Leave period will not be considered for the purpose of earning any kind of leave.
+  utter_CCL_entitlement:
+  - text: |-
+      a) Payment of leave salary (Basic + DA) equal to the pay drawn immediately before proceeding on leave and drawal of medical benefits in respect of employee and her dependents. 
+      b) She will be granted permission to continue occupying the existing accommodation on payment of usual rent/license fee. Employee drawing HRA/ Leased accommodation will continue to draw HRA/ leased accommodation during the period of leave. 
+      c) During the period of CCL the company shall continue to contribute 30% of Basic Pay + DA toward post-retirement benefits. Also the concerned woman employee shall continue to contribute towards their Provident Fund and Pension. 
+      d) The period of CCL shall not count for the purpose of earning EL, HPL and CL. 
+      e) Monthly instalments towards recovery of HBA, Conveyance Advance, Multi-purpose advance, etc. while availing CCL shall continue to be recovered.
+  utter_mobile_workman_entitlement:
+  - text: W0 to W6 - 8000 and for W7 TO WSG - 10000
+  utter_mobile_supervisor_entitlement:
+  - text: Supervisor Mobile Entitlement - 11000
+  utter_mobile_executive_entitlement:
+  - text: |-
+      Executives upto E3 - 13000.00 
+      E4 and E5 - 16000.00 
+      E6 - 24000.00 
+      E7 - 30000.00 
+      E8 - 40000.00 
+      E9 - 50000.00
+  utter_tele_workman_entitlement:
+  - text: 10000 annually
+  utter_tele_supervisor_entitlement:
+  - text: 11000 annually
+  utter_tele_executive_entitlement:
+  - text: |-
+      Executives upto E5 - 12000.00 
+      E6 - 18000.00 E7 - 24000.00 
+      E8(GM and Sr GM) - 36000.00 
+      E8(CGM) - 48000.00 
+      E9 - Unlimited
+  utter_laptop_entitlement:
+  - text: One laptop computer (including printers and other peripherals) shall be provided to employees in Executive and Supervisory category, within the monetary ceiling limit prescribed as under Level - Amount (Rs.) (excluding taxes) Supervisor - 55000.00 E2 to E4 (ET/AET) - 60000.00 E5 to E7 - 70000.00 E8 - 80000.00 E9 - 100000.00
+  utter_CAdv_entitlement:
+  - text: |-
+      1.Equivalent to 12 months Basic Pay for Electric Vehicles (Max ceiling Rs. 6 Lakhs) or 
+      2.10 months Basic Pay for other vehicles (Max ceiling Rs. 6 lakhs) or 
+      3.Actual cost vehicle, whichever is lower. 
+      4.Actual cost of two-wheeler or Rs.1,00,000/-(Rupees one lakhs) whichever is lower(including insurance, taxes and insurance charges)"
+  utter_Award_benefit:
+  - text: The employees who are awarded any of the specified National/All India Awards shall be granted one special increment from the date the Award is actually conferred. \n Employees who are conferred Prime Minister's Shram Award shall also be eligible for following benefits \n 1. Service Weightage \n 2. Reimbursement of full tutuion fees incurred towards education of children \n 3. One set of clothes for spouse
+  utter_EGF_duration:
+  - text: |-
+      Gratuity shall be payable to an employee on the termination of his employment after he has rendered continuous service for not less than five years-
+       a) on his superannuation; or
+       b) on his resignation, retirement or termination of his services; or
+       c) on his death or disablement due to accident or disease.
+       Provided that the completion of continuous service of five years shall not be necessary where the termination of the employment of any employee is due to death or disablement.
+       Provided further that in the case of death of the employee, gratuity payable to him shall be paid to his nominee, or if no nomination has been made, to his heirs and where any such nominee or such heirs is a minor, the share of such minor shall be deposited with the Controlling Authority who shall invest the same for the benefit of such minor in such bank or other financial institutions as may be prescribed until such minor attains majority.
+       Where the transfer of an employee to another Public Sector Undertaking is effected with the consent of POWERGRID Management, the employee shall be allowed the benefit of transfer of his gratuity to his new employer.
+  utter_FMTE_entitlement:
+  - text: |-
+      E4 to E7 - 6250/- 
+      Executives upto E3 - 5000/- 
+      SSG - 4050/- 
+      S1 to S4 - 3750/- 
+      WSG - 4050/- 
+      W7 to W11 - 3750/- 
+      W3 to W6 - 3150/- 
+      W0 to W2 2625/-"
+  utter_ask_level:
+  - text: what is your working level (Workman/Executive/Supervisor)?
+  utter_MPA_eligibility:
+  - text: Employees on regular rolls of the Company including lien holders and deputationists
+  utter_CS_study_eligibility:
+  - text: This applies to all regular employees of the Corporation but excludes Trainees/Apprentices/those employed on contract/deputation/ temporary/ casual basis. Employees who are under suspension or against whom any disciplinary proceedings/vigilance cases are pending/contemplated may not be considered for the sponsorship.
+  utter_CHEA_eligibility:
+  - text: Employee who has been confirmed in regular establishment (excluding training period) and has put in 3 years service and whose children have secured admission or currently pursuing graduation/post graduation/ professional courses in India or abroad.
+  utter_study_leave_eligibility:
+  - text: |-
+      (a) Study Leave is admissible to any regular employee of the Corporation, excluding a trainee/apprentice who; 
+      i) Has rendered a minimum of three years service exclusive of training/apprenticeship period in the Corporation. In the case of deputationists who are subsequently absorbed in the Corporation, the period of deputation will also be taken into account for this purpose. 
+      ii) Is not due to retire within 5 years of the date on which he is expected to return to duty after the completion of the course. 
+      iii) Is not employed on the contract/deputation/ temporary or casual basis. 
+      iv) Is not under suspension and no disciplinary proceedings/vigilance cases are pending against him. 
+      (b) Study Leave is admissible for a course that; 
+      i) Is conducted in India (Grant of Study Leave for course abroad can also be considered, if the course is not available in India). 
+      ii) has a direct and close connection with the sphere of duties of the employee. 
+      iii) leads to the award of recognised Post-Graduate Degree/Diploma or Doctorate.
+  utter_pension_eligibility:
+  - text: All employees of POWERGRID who are members of the POWERGRID Death Relief Scheme shall automatically become member of the plan
+  utter_CCL_eligibility:
+  - text: Women employees on the regular rolls of the Corporation excluding trainees.
+  utter_ECPP_eligibility:
+  - text: All employees of POWERGRID who are members of the POWERGRID Death Relief Scheme shall automatically become member of the plan.
+  utter_sabbatical_eligibility:
+  - text: The scheme will apply to all regular employees in executive cadre excluding Directors in the Board, CVO, Deputationist and on secondment. However, the concerned executive should not be under suspension or undergoing punishment as a result of any disciplinary/vigilance case or proceedings should not be pending or contemplated against him. The Sabbatical scheme will not apply to Executive Trainees (ETs),Other Trainees/Apprentices,Personnel engaged on temporary or casual basis."
+  utter_CAdv_eligibility:
+  - text: |-
+      1. The advance will be granted only to such employees who have completed at least one year’s service in the regular establishment of the company and who have been subscribing for at least one year either to the POWERGRID Provident Fund Account or any other recognised Provident Fund Account. Provided further that the above stipulation regarding minimum one year’s service shall not be applicable in respect of such employees of Government Departments/Public Sector Undertakings/Statutory Corporations/Quasi-Government Bodies who join the services of the Company and apply for an advance for the purpose of re-payment of the balance amount of conveyance advance earlier taken from their parent organisations/ departments and interest accrued thereon. 
+      2. An advance towards the purchase of a vehicle including repayment of an advance taken from an earlier organization or Financial Institution shall be granted only to such eligible employees. 
+      3. An employee will be eligible for the advance only if an earlier conveyance advance sanctioned to him, if any, has been recovered in full and a minimum period of 4 years reckoned from the date of drawal of the last advance has elapsed. Provided that the above restriction of 4 years shall not apply in case of purchase of a motorcar and where in earlier advance was drawn for the purchase of a two-wheeler. 
+      4. The advance will not be sanctioned to an employee who is to leave the services of the company within 36 months of the grant of the advance either on superannuation or otherwise. 
+      5. An employee during his suspension period shall not be eligible for the advance.
+  utter_Award_eligibility:
+  - text: |-
+      The incentive under the scheme shall be admissible, if any one or more of the Awards as specified below are conferred on an employee- 
+      1.Invention Promotion Scheme Award 
+      2.Jivan Raksha Award 
+      3.Prime Minister's Shram Awards 
+      4.Arjun Award for Sportsmen 
+      5.S.S. Bhatnagar Award 
+      6.Homi Bhabha Award for excellent scientific work 
+      7.Indian Science Academy (INSA) Award 
+      8.Bharat Ratna. 
+      9.Padma Vibhushan 
+      10.Padma Bhushan 
+      11.Padma Shri 
+      12.Ashok Chakra 
+      13.Kirti Chakra 
+      14.Shaurya Chakra 
+      15.Sarvottam Jeevan Raksha Padak 
+      16.Uttam Jeevan Raksha Padak 
+      17.Fire Service medal awarded by the President of India 
+      18.Lalit Kala Academy Award 
+      19.Sangeet Natak Academy Award 
+      20.tSahitya Akademi Award
+  utter_EGF_eligibility:
+  - text: |-
+      Gratuity shall be payable to an employee on the termination of his employment after he has rendered continuous service for not less than five years- 
+      a) on his superannuation; or 
+      b) on his resignation, retirement or termination of his services; or 
+      c) on his death or disablement due to accident or disease. 
+      Provided that the completion of continuous service of five years shall not be necessary where the termination of the employment of any employee is due to death or disablement. 
+      Provided further that in the case of death of the employee, gratuity payable to him shall be paid to his nominee, or if no nomination has been made, to his heirs and where any such nominee or such heirs is a minor, the share of such minor shall be deposited with the Controlling Authority who shall invest the same for the benefit of such minor in such bank or other financial institutions as may be prescribed until such minor attains majority. Where the transfer of an employee to another Public Sector Undertaking is effected with the consent of POWERGRID Management, the employee shall be allowed the benefit of transfer of his gratuity to his new employer.
+  utter_EPF_eligibility:
+  - text: |-
+      a) Every employee employed in or in connection with the work of POWERGRID, shall be entitled and required to become a member of the Fund from the date of joining POWERGRID. 
+      b) Every employee in or in connection with the work of POWERGRID other than an excluded employee shall also be entitled and required to become a member of the Fund from the day this scheme comes into force in POWERGRID, if on the date of such coming into force, such employee is subscriber to a Provident Fund maintained in respect of the factory or other establishment or in respect of any other factory or establishment to which the act applies under the same employer i.e. POWERGRID.
+  utter_FMTE_eligibility:
+  - text: The Scheme of Reimbursement of Fixed Monthly Travelling Expenses (FMTE) is intended for the employees (upto E7 level)  who are engaged in O&M work and consequently have to undertake frequent travel for this purpose in the normal course of their duties for line patrolling etc. in contrast to those engaged in office work. The scheme is intended to compensate such employees for the expenditure incurred on food and incidentals during the course of duty.
+  utter_mac_eligibility:
+  - text: The award shall be admissible to the children of such employees who may have completed one-year service in the regular establishment of the company on the date of announcement/publication of the result of the examination taken by the child. On passing the prescribed examination from the recognised Board/ University/Institution at the required standards, the children of the employee shall be eligible for grant of lump-sum cash Award."
+  utter_DRS_eligibility:
+  - text: All the 'Employees' as defined in the Scheme shall automatically become the members of the Scheme unless opted otherwise. Membership of the scheme can not be withdrawn by an employee during his service in the Company.
+  utter_study_leave_duration:
+  - text: |-
+      i) Study Leave is admissible for a maximum period of 3 years and only once during the entire service of the employee, subject to the exigencies of work. 
+      ii) This leave is not debited to the regular leave account of the employee.
+  utter_CCL_duration:
+  - text: |-
+      (i) The women employees may be granted Child Leave Care (CCL) for a maximum period of two years i.e. 730 days with pay during their entire service period for taking care of upto two eldest surviving children (children will also include legally adopted children) whether for rearing or to look after any of the needs like education, sickness etc. 
+      (ii) CCL will have to be availed in a spell of not less than one month and maximum thrice in a year 
+      (iii) In case of disability in a child (with minimum disability of 40% as specified in Ministry of Social Justice and Empowerment’s Notification No- 16-18/97-NI dated 01.06.2001), CCL may be availed by a women employee upto the age of 22 years of the child instead of 18 years. However, total CCL will not exceed 730 days during the entire service period.
+  utter_sabbatical_duration:
+  - text: Sabbatical will be allowed once in-service career for a minimum period of 01 Year and maximum upto 03 years.
+  utter_mobile_duration:
+  - text: Employees who have already availed the reimbursement for mobile phone shall be entitled for a new device only after the lapse of two years.
+  utter_guest_house_criteria:
+  - text: The Guest House/Transit Camp accommodation will be allotted on prior intimation, subject to availability of accommodation.The allotment of accommodation will be made on ‘First Come First Served’ basis.
+  utter_ECPP_deduction:
+  - text: In an event of death of a member having a continuous service of less than 10 years, each member shall contribute Rs.300 (Rupees three hundred) towards POWERGRID Employees Contributory Family Pension Plan. In an event of death of a member having a continuous service of more than 10 years each member shall contribute Rs.150 (Rupees one hundred and fifty) towards POWERGRID Employees Contributory Family Pension Plan."
+  utter_EPF_deduction:
+  - text: The contribution payable by the Company to the Fund shall be at the rate of 12% of the Basic Wages and the Dearness Allowance (including cash value of any food concession) payable to each employee who is eligible for membership of the Fund
+  utter_DRS_deduction:
+  - text: |-
+      - In an event of death of a member having a continuous service of less than 10 years then each member shall contribute Rs.200 (Rupees two hundred) towards DRS. 
+      - In an event of death of a member having a continuous service of more than 10 years then each member shall contribute Rs.100 (Rupees one hundred) towards DRS. 
+      - In an event of death in case of COVID related death of a member, other members shall contribute an additional sum of Rs. 200/-each which shall be provided as lumpsum to the nominee of deceased employee. Members who have opted out of the provision of such additional contribution for COVID related deaths shall not be covered under this provision.
+  utter_CAdv_rates:
+  - text: |-
+      Motor car - 7.50%
+      Electric car - 4.5%
+      Two wheeler - 6.5%
+  utter_CHEA_rates:
+  - text: Simple interest @ 7.5% from the date of payment of the advance.
+  utter_CHEA_benefit:
+  - text: The details of the amount admissible are as follows - For Children Studying in India- 80% of course fee, or Rs. 20 lakhs, whichever is lower, For Children Studying abroad- 80% of course fee, or Rs. 40 lakhs, whichever is lower
+  utter_EGF_benefit:
+  - text: |-
+      The amount of gratuity shall be equal to 15 days wages last drawn by the Employee concerned for every completed year of service or part thereof in excess of 6 months subject to maximum of 40 times 15 days wages or  Rs. 20 Lakhs whichever is less. However, in case of death of an employee while in service, amount of gratuity will be admissible on the scale, calculated as under- Period of continuous service 
+      Amount of Gratuity Upto 1 year - 4 times 15 days wages 
+      More than 1 year but upto 5 years - 12 times 15 days wages 
+      More than 5 years but upto 20 years - 24 times 15 days wages 
+      More than 20 years - Half month's wages for completed half year of service subject to maximum of 66 times 15 days wages. 
+      Provided, however, the amount of gratuity shall in no case exceed Rs.20 Lakhs. 
+      Note- The funding of the entire amount of gratuity would be met from within the ceiling of 30% of Basic + DA for superannuation benefits. The ceiling of gratuity shall increase by 25% whenever IDA rises by 50%.
+  utter_MPA_benefit:
+  - text: The amount of advance admissible shall be three month Basic Pay and prevailing Dearness Allowance as on date of application.
+  utter_DRS_benefit:
+  - text: Total number of membership in the Company as intimated by the secretary as on the last date of the month preceding the month in which the death occurs  is to be multiplied with the requisite amount as per member, to obtain the total amount to be paid to the nominee of the deceased member.
+  utter_WF_benefit:
+  - text: |-
+      1. Medical- Visiting Medical Consultant, Empanelment of Hospitals, Provision for First-aid room & First aid box etc. 
+      2. Education- Nursery School in Sub-station Township, Reservation of Seats in Reputed Schools for Wards of Employees 
+      3. Transport Facilities for schooling, Shopping, Medical emergency. 
+      4. Expenditure for National Festivals. 
+      5. Sports, Games, Recreation & Cultural Activities:POWERGRID Sports Promotion Council (PSPC), POWERGRID Cultural & Social Council (PCSC), 
+      6. POWERGRID Employees Welfare Association (PEWA) 
+      7. Community Development Activities
+  utter_GPAI_benefit:
+  - text: The Insurance Policy will provide coverage by way of payment of compensation to the extent specified in this Scheme to the covered employee round the clock, whether he is on Company's duty or not, on any location in India or abroad, against a bodily injury resulting solely and directly from accidents caused by violent, external and visible means which shall solely, and independent of any cause, result in death or disablement
+  utter_EFER_benefit:
+  - text: On the separation of an employee from the service of the Company on account of Death/ Permanent Total Disablement, the beneficiary would be entitled to monthly payment equivalent to the employee’s 50% of one month (Basic Pay + DA + Special Pay/ Stagnation increment) last drawn provided the beneficiary deposits with the Management the amounts as indicated in para  below in one lumpsum. Such monthly payment would continue till the normal notional date on which the employee concerned would have attained the age of superannuation had the employee continued in the service of the Company.The interest accrued on balance of PF account (excluding VPF) from the date of cessation of service of the employee till the date of withdrawal shall not be considered for availing benefits under the Scheme. Deposit of amount- The beneficiary shall deposit PF balance, Gratuity amounts and Group Insurance (EDLI only) amount within a maximum period of 30 days of settlement of all dues relating to PF and Gratuity. The beneficiary will have no option to retain any part of the amounts paid by the company towards settlement of PF, Gratuity and Group Insurance (EDLI only) except the VPF deposited by the employee in the Provident Fund Scheme.
+  utter_PFE_benefit:
+  - text: In the event of death of an eligible employee while in service of the company, the following assistance shall be admissible- An amount of Rs. 20,000/- (Rupees Twenty thousand only)  shall be paid towards the funeral expenses of the deceased employee. This assistance will be admissible even if an employee dies at a place other than his/her place of posting. Free transport wherever available or alternatively reimbursement for cost of transportation for transporting the dead body of the deceased employee to home town or any where in India where the family wishes to conduct the funeral, will be provided.
+  utter_sabbatical_objective:
+  - text: |-
+      Purpose of the Sabbatical Policy is to provide executives with the opportunity- 
+      - To discharge various familial and social obligations (e.g. Health issues of parents, spouse, children etc.) 
+      - To support spouse/children in their various personal/official pursuits 
+      - To take up entrepreneurial or self-employment venture 
+      - To take up self-development ventures. 
+      - To explore different work-environments/situations by seeking employment elsewhere (full-time/part-time/contract)
+  utter_PFE_objective:
+  - text: No, Sabbatical leaves will not be clubbed or combined with any other kind of leave.
+  utter_GPAI_objective:
+  - text: Group Personal Accident Insurance Scheme (GPAIS) is a welfare measure formulated to insure employees against the consequences of personal accidents and to provide appropriate relief to the affected employees or nominees through an Insurance Cover.
+  utter_EFER_objective:
+  - text: POWERGRID Employees Family Economic Rehabilitation Scheme has been introduced for providing monetary benefit and support to employees/ family in the event of permanent total disablement/ death of the employee while in service.
+  utter_ta_eligibility:
+  - text: Travelling Allowance is applicable to journeys performed by the employees to places beyond a radius of 30 kms from the Headquarters or outside municipal limits of the Headquarters, whichever is more.
+  utter_ta_air_entitlement:
+  - text: |-
+      E9 and Above - Executive Class
+      E6 to E8 - Economy Class
+      E2 to E5 - Economy Class while on Business tours or training
+  utter_ta_train_entitlement:
+  - text: |-
+      E8 and Above - ACC I Class
+      E2 to E6 - AC II Tier
+      All Supervisors and Workmen in the levels W7 & above.- AC II Tier
+      W1 to W6 - AC III Tier
+      W0 - Sleeper Class
+  utter_ta_road_entitlement:
+  - text: |-
+      E6 and Above - Actual Taxi Fare
+      E4 to E5 - Taxi Fare limited to Rs 6.1/km
+      E3 - Fare of a single seat in taxi availed limited to Rs.2.30 /kms or actual bus fare.
+      E2, All Supervisors, Workmen W7 and above. - Fare of a single seat in taxi availed limited to Rs.1.10/ Kms or actual bus fare.
+      W0 to W6 - Actual Bus Fare
+  utter_select_grade_executive:
+  - text: Select your grade
+    buttons:
+    - title: CMD & Functional Directors
+      payload: /choose_grade{{"grade":"CMD & Functional Directors"}}
+    - title: E9
+      payload: /choose_grade{{"grade":"E9"}}
+    - title: E8
+      payload: /choose_grade{{"grade":"E8"}}
+    - title: E7
+      payload: /choose_grade{{"grade":"E7"}}
+    - title: E6
+      payload: /choose_grade{{"grade":"E6"}}
+    - title: E5
+      payload: /choose_grade{{"grade":"E5"}}
+    - title: E4
+      payload: /choose_grade{{"grade":"E4"}}
+    - title: E3
+      payload: /choose_grade{{"grade":"E3"}}
+    - title: E2
+      payload: /choose_grade{{"grade":"E2"}}
+actions:
+- action_level_check
+- action_restarted
+- action_slot_reset
+- action_subject2_check
+- action_subject_check
+- action_tables
+- utter_CHEA_process
+- utter_CS_study_eligibility
+- utter_TNA_process
+- utter_ask_level
+- utter_ask_travel_mode
+- utter_greet
+- utter_mobile_executive_entitlement
+- utter_mobile_workman_entitlement
+- utter_select_grade
+- utter_study_process
+forms:
+  level_form:
+    level:
+    - type: from_entity
+      entity: level
+  travel_form:
+    travel_mode:
+    - type: from_entity
+      entity: travel_mode
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false
